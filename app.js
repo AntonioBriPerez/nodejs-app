@@ -1,6 +1,6 @@
 const http = require('http');
-// Import the MongoDB client
-const { MongoClient } = require('mongodb');
+const mongoose = require('mongoose');
+
 const server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('Hello, World!\n');
@@ -14,10 +14,11 @@ server.listen(port, () => {
 
 
 
-const mongoose = require('mongoose');
+
 
 // Replace 'your-database-url' with your actual MongoDB connection URL.
-const dbURL = 'mongodb://your-database-url';
+const dbURL =  'mongodb://user:123@18.101.118.156:27017/db';
+
 
 // Connect to MongoDB
 mongoose.connect(dbURL, {
