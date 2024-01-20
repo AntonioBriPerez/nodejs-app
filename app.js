@@ -14,23 +14,19 @@ server.listen(port, () => {
 
 
 
-// Define the MongoDB connection string
-const uri = 'mongodb://user:pass123@18.101.118.156:27017/db';
+const mongoose = require('mongoose');
 
-// Create a MongoDB client
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// Replace 'your-database-url' with your actual MongoDB connection URL.
+const dbURL = 'mongodb://your-database-url';
 
-// Connect to the MongoDB server
-client.connect()
-  .then(() => {
-    console.log('Connected to MongoDB');
-    console.log('Connection string:', uri);
-
-    // Add your MongoDB-related code here
-
-    // Example: You can close the connection when done
-    // client.close();
-  })
-  .catch(err => {
-    console.error('Error connecting to MongoDB:', err);
-  });
+// Connect to MongoDB
+mongoose.connect(dbURL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log('Connected to MongoDB');
+})
+.catch((error) => {
+  console.error('Error connecting to MongoDB:', error);
+});
